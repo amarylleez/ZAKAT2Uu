@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zakat Emas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="page-body">
+
+    <!--================================= HEADER =================================-->
+    <header class="header">
+        <h1 class="header-title">ZAKAT2U</h1>
+    </header>
+
+    <!--================ NAVIGATION SECTION ================-->
+    <nav>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="calculate.html">Calculation</a></li>
+        </ul>
+    </nav>
+
+    <!--================ COLORBLIND MODE ================-->
+    <div class="colorblind-mode">
+        <label for="colorblind">Mode:</label>
+        <select id="colorblind" onchange="changeMode()">
+            <option value="normal">Default</option>
+            <option value="deuteranopia">Deuteranopia</option>
+        </select>
+    </div>
+    <br><br>
+
+    <main>
+        <!--================ ZAKAT CALCULATOR SECTION ================-->
+        <section id="calculator" class="calculator-section">
+            <div class="calculator-container">
+                <h2>Calculate Zakat Emas</h2>
+                <form id="zakat-form">
+                    <label for="gold-weight">Gold Weight (grams):</label>
+                    <input type="number" id="gold-weight" placeholder="Enter Gold Weight" required>
+                    <button type="button" onclick="calculateGoldZakat()">Calculate Zakat</button>
+                </form>
+                <div id="gold-result" class="result"></div>
+            </div>
+        </section>
+    </main>
+
+    <!--================ JAVASCRIPT ================-->
+    <script>
+        // Handle Zakat Calculation for Gold
+        function calculateGoldZakat() {
+            const goldWeightInput = document.getElementById('gold-weight');
+            const goldWeight = parseFloat(goldWeightInput.value);
+
+            if (isNaN(goldWeight) || goldWeight <= 0) {
+                document.getElementById('gold-result').innerText = 'Please enter a valid positive weight.';
+                goldWeightInput.focus();
+                return;
+            }
+
+            const zakatRatePerGram = 85; // Example price per gram in RM
+            const zakat = goldWeight * zakatRatePerGram * 0.025; // Zakat = Weight x Price x 2.5%
+            document.getElementById('gold-result').innerText = `Your Zakat Emas is: RM ${zakat.toFixed(2)}`;
+        }
+
+        // Handle Colorblind Mode
+        function changeMode() {
+            const selectedMode = document.getElementById('colorblind').value;
+            const body = document.getElementById('page-body');
+
+            if (selectedMode === 'deuteranopia') {
+                body.style.filter = 'url(#deuteranopia-filter)';
+            } else {
+                body.style.filter = 'none';
+            }
+        }
+    </script>
+
+    <!--================ SVG FILTER FOR COLORBLIND MODE ================-->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <filter id="deuteranopia-filter">
+            <feColorMatrix
+                type="matrix"
+                values="0.625 0.375 0 0 0
+                        0.7 0.3 0 0 0
+                        0 0.3 0.7 0 0
+                        0 0 0 1 0" />
+        </filter>
+    </svg>
+    <script src="script.js"></script>
+</body>
+</html>

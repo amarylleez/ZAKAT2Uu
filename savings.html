@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zakat Wang Simpanan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="page-body">
+
+    <!--================================= HEADER =================================-->
+    <header class="header">
+        <h1 class="header-title">ZAKAT2U</h1>
+    </header>
+
+    <!--================ NAVIGATION SECTION ================-->
+    <nav>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="calculate.html">Calculation</a></li>
+        </ul>
+    </nav>
+
+    <!--================ COLORBLIND MODE ================-->
+    <div class="colorblind-mode">
+        <label for="colorblind">Mode:</label>
+        <select id="colorblind" onchange="changeMode()">
+            <option value="normal">Default</option>
+            <option value="deuteranopia">Deuteranopia</option>
+        </select>
+    </div>
+    <br><br>
+
+    <main>
+        <!--================ ZAKAT CALCULATOR SECTION ================-->
+        <section id="calculator" class="calculator-section">
+            <div class="calculator-container">
+                <h2>Calculate Zakat Wang Simpanan</h2>
+                <form id="zakat-form">
+                    <label for="savings-amount">Savings Amount (RM):</label>
+                    <input type="number" id="savings-amount" placeholder="Enter Savings Amount" required>
+                    <button type="button" onclick="calculateSavingsZakat()">Calculate Zakat</button>
+                </form>
+                <div id="savings-result" class="result"></div>
+            </div>
+        </section>
+    </main>
+
+    <!--================ JAVASCRIPT ================-->
+    <script>
+        // Handle Zakat Calculation
+        function calculateSavingsZakat() {
+            const savingsInput = document.getElementById('savings-amount');
+            const savings = parseFloat(savingsInput.value);
+
+            if (isNaN(savings) || savings <= 0) {
+                document.getElementById('savings-result').innerText = 'Please enter a valid positive amount.';
+                savingsInput.focus();
+                return;
+            }
+
+            const zakat = savings * 0.025; // 2.5%
+            document.getElementById('savings-result').innerText = `Your Zakat Wang Simpanan is: RM ${zakat.toFixed(2)}`;
+        }
+
+        // Handle Colorblind Mode
+        function changeMode() {
+            const selectedMode = document.getElementById('colorblind').value;
+            const body = document.getElementById('page-body');
+
+            if (selectedMode === 'deuteranopia') {
+                body.style.filter = 'url(#deuteranopia-filter)';
+            } else {
+                body.style.filter = 'none';
+            }
+        }
+    </script>
+
+    <!--================ SVG FILTER FOR COLORBLIND MODE ================-->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <filter id="deuteranopia-filter">
+            <feColorMatrix
+                type="matrix"
+                values="0.625 0.375 0 0 0
+                        0.7 0.3 0 0 0
+                        0 0.3 0.7 0 0
+                        0 0 0 1 0" />
+        </filter>
+    </svg>
+    <script src="script.js"></script>
+</body>
+</html>

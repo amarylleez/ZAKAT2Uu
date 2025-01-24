@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Zakat Calculator</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+        <body id="page-body">
+
+            <!--================================= HEADER =================================-->
+            <header class="header">
+                <h1 class="header-title">ZAKAT2U</h1>
+            </header>
+
+            <!--================ NAVIGATION SECTION ================-->
+            <nav>
+                <ul class="navbar">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="calculate.html">Calculation</a></li>
+                </ul>
+            </nav>
+
+            <!--================ COLORBLIND MODE ================-->
+            <div class="colorblind-mode">
+                <label for="colorblind">Mode:</label>
+                <select id="colorblind" onchange="changeMode()">
+                    <option value="normal">Default</option>
+                    <option value="deuteranopia">Deuteranopia</option>
+                </select>
+            </div>
+
+            <main>
+                <!--================================= ABOUT =================================-->
+                <section id="about-section" class="about-section">
+                    <h1>Meet Our Team</h1>
+                    
+                    <div class="staff-container">
+                        <!--================ STAFF 1 ================-->
+                        <div class="staff-member">
+                            <img src="athirah.jpg" alt="Staff Member 1" class="member-image">
+                            <h3>ATHIRAH NUR SYAFIQAH</h3>
+                            <p>Founder & Zakat Specialist</p>
+                        </div>
+
+                        <!--================ STAFF 2 ================-->
+                        <div class="staff-member">
+                            <img src="ariessa.jpg" alt="Staff Member 2" class="member-image">
+                            <h3>ARIESSA NUR AIN</h3>
+                            <p>Operations Manager</p>
+                        </div>
+
+                        <!--================ STAFF 3 ================-->
+                        <div class="staff-member">
+                            <img src="anis.jpg" alt="Staff Member 3" class="member-image">
+                            <h3>ANIS NUR ATIKAH</h3>
+                            <p>Community Outreach</p>
+                        </div>
+                    </div>
+                </section>
+        
+
+                <!--================================= SVG FILTER =================================-->
+                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <filter id="deuteranopia-filter">
+                        <feColorMatrix
+                            type="matrix"
+                            values="0.625 0.375 0 0 0
+                                    0.7 0.3 0 0 0
+                                    0 0.3 0.7 0 0
+                                    0 0 0 1 0" />
+                    </filter>
+                </svg>
+                  
+            </main>
+            <!--================================= JAVASCRIPT =================================-->
+            <script src="script.js"></script>
+        </body>
+</html>

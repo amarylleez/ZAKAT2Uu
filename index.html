@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zakat Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="page-body">
+
+    <!--================================= HEADER =================================-->
+    <header class="header">
+        <h1 class="header-title">ZAKAT2U</h1>
+    </header>
+
+    <!--================ NAVIGATION SECTION ================-->
+    <nav>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="calculate.html">Calculation</a></li>
+        </ul>
+    </nav>
+
+    <!--================ COLORBLIND MODE ================-->
+    <div class="colorblind-mode">
+        <label for="colorblind">Mode:</label>
+        <select id="colorblind" onchange="changeMode()">
+            <option value="default">Default</option>
+            <option value="deuteranopia">Deuteranopia</option>
+        </select>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-wrapper">
+            <div class="left-content">
+                <h2>Donate Your</h2>
+                <h1>ZAKAT</h1>
+                <p class="subtitle">Purifies your heart & wealth</p><br><br><br>
+                <div class="countdown">
+                    <h2>Countdown to Ramadan</h2>
+                    <div id="countdown-timer">
+                        <div class="timer-item"><span id="days">00</span> Days</div>
+                        <div class="timer-item"><span id="hours">00</span> Hours</div>
+                        <div class="timer-item"><span id="minutes">00</span> Minutes</div>
+                        <div class="timer-item"><span id="seconds">00</span> Seconds</div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-content">
+                <div class="donation-illustration">
+                    <img src="derma.png" alt="Donation Illustration" id="image">
+                </div>
+                <blockquote>
+                    “Islam dibangun atas lima perkara: bersaksi bahwa tidak ada Tuhan selain Allah dan Muhammad adalah utusan Allah, mendirikan salat, menunaikan zakat, berpuasa di bulan Ramadan, dan berhaji ke Baitullah.”
+                    <br>(HR. Bukhari & Muslim)
+                </blockquote>
+            </div>
+        </div>
+    </main>
+
+    <!--================================= SVG FILTER =================================-->
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <filter id="deuteranopia-filter">
+                <feColorMatrix
+                    type="matrix"
+                    values="0.625 0.375 0 0 0
+                            0.7 0.3 0 0 0
+                            0 0.3 0.7 0 0
+                            0 0 0 1 0" />
+            </filter>
+        </svg>
+
+        
+    <!--================================= JAVASCRIPT =================================-->
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
